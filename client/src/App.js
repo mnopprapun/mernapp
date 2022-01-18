@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 // import image when needed
 import { useDispatch } from "react-redux";
@@ -11,6 +11,9 @@ const App = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  // Id is for parent component so posts and forms can connect
+  const [currentId, setCurrentId] = useState(0);
+
   useEffect(() => {
     // action
     dispatch(getPosts());
@@ -22,7 +25,7 @@ const App = () => {
         <Typography className={classes.heading} variant="h2" align="center">
           Picutre Posts
         </Typography>
-        <img src={null} alt="memories" height="60" />
+        <img className={classes.image} src={null} alt="memories" height="60" />
       </AppBar>
       <Grow in>
         <Container>
@@ -33,10 +36,10 @@ const App = () => {
             spacing={3}
           >
             <Grid item xs={12} sm={7}>
-              <Posts />
+              <Posts setCurrentId={setCurrentId}/>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Form />
+              <Form currentId={currentId} setCurrentId={setCurrentId}/>
             </Grid>
           </Grid>
         </Container>

@@ -16,9 +16,10 @@ export default makeStyles({
   card: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: '',
     borderRadius: '15px',
     height: '100%',
+	width: '100%',
     position: 'relative',
   },
   overlay: {

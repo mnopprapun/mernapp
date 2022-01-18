@@ -1,6 +1,8 @@
 
 const reducer = (posts = [], action) => {
   switch (action.type) {
+	  case "UPDATE":
+		  return posts.map((post) => post._id === action.payload._id ? action.payload : post);
     case "FETCH_ALL":
       return action.posts;
     case "CREATE":
@@ -10,3 +12,6 @@ const reducer = (posts = [], action) => {
   }
 };
 export default reducer
+
+
+//action payload is the updated posts
