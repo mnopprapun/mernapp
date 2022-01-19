@@ -11,13 +11,13 @@ const App = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  // Id is for parent component so posts and forms can connect
+  // Id is for parent component so posts and forms can connect to update
   const [currentId, setCurrentId] = useState(0);
 
   useEffect(() => {
     // action
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <Container maxwidth="lg">
